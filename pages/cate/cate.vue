@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 使用自定义组件 -->
+    <my-search @click="gotoSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧的滑动区域 -->
       <scroll-view scroll-y="true" class="left-scroll-view" :style="{height:wh+'px'}">
@@ -41,13 +43,12 @@
     },
     onLoad() {
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
       this.getCateList()
     },
     methods:{
       async getCateList(){
         const {data:res} = await uni.$http.get('/api/public/v1/categories')
-        console.log(res);
         if(res.meta.status !== 200) return uni.$showMsg()
         this.cateList = res.message
         // 二级分类赋值
@@ -64,6 +65,11 @@
       gotoGoodsList(item3){
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid' + item3.cat_id
+        })
+      },
+      gotoSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
         })
       }
     }
