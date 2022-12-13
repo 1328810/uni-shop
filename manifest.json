@@ -55,10 +55,20 @@
             "urlCheck" : true,
             "checkSiteMap":false
         },
-        "usingComponents" : true,
+        "usingComponents":true,
         "optimization": {
         	"subPackages": true
-        }
+        },
+        "requiredPrivateInfos": [
+        "chooseAddress",
+            "chooseLocation",
+            "choosePoi",
+            "getLocation",
+            "onLocationChange",
+            "startLocationUpdateBackground",
+            "startLocationUpdate"
+                 ]
+                 
         // "runmode" : "liberate" // 开启分包优化后，必须配置资源释放模式
 
     },
